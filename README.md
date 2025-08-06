@@ -80,7 +80,7 @@ templates:
   - configmap.yaml
 ```
 
-## Configuration
+## 🛠 Configuration
 You can configure the Helm chart by modifying the `values.yaml` file. The following parameters can be set:
 
 ```yaml
@@ -100,6 +100,46 @@ env:
   GAME_VERSION: "1.0"
   GAME_DEVELOPER: "Rohith Raju"
 ```
+
+## 🔄 Step 6: Install & Configure Argo CD
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+## Port Forward Argo CD
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8081:443
+```
+## Fetch Argo CD Admin Password
+
+```bash
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+```
+
+## Login to Argo CD CLI
+
+```bash
+argocd login localhost:8081 --username admin --password <PASTE_PASSWORD> --insecure
+``` 
+
+## Create Argo CD App for Word Game
+
+```bash
+argocd app create word-game \
+  --repo https://github.com/DexRoku/word_game.git \
+  --path word-game \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace default \
+  --sync-policy automated \
+  --server localhost:8081
+```
+
+## ✅ Final Verification
+Access Word Game UI: http://localhost:8080
+
+Access Argo CD UI: https://localhost:8081
 
 ## 🤝 Contributions
 
