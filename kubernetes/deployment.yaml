@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: word-game-app
+  labels:
+    app: word-game-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: word-game-app
+  template:
+    metadata:
+      labels:
+        app: word-game-app
+    spec:
+      containers:
+      - name: word-game-app
+        image: word-game-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8501
