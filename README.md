@@ -39,9 +39,9 @@ The app is containerized using Docker and deployed to a Kubernetes cluster using
 3. **Deploy to Kubernetes**
 
    ```bash
-kubectl apply -f kubernetes/configmap.yaml
-kubectl apply -f kubernetes/deployment.yaml
-kubectl apply -f kubernetes/service.yaml
+    kubectl apply -f kubernetes/configmap.yaml
+    kubectl apply -f kubernetes/deployment.yaml
+    kubectl apply -f kubernetes/service.yaml
     ```
 
 4. ** Port Forward Service**
@@ -84,15 +84,6 @@ templates:
 You can configure the Helm chart by modifying the `values.yaml` file. The following parameters can be set:
 
 ```yaml
-Docker image repository & tag
-
-Replica count
-
-Service type and port
-
-Environment variables (GAME_TITLE, GAME_VERSION, GAME_DEVELOPER)
-
-```yaml
 replicaCount: 3
 
 image:
@@ -109,3 +100,11 @@ env:
   GAME_VERSION: "1.0"
   GAME_DEVELOPER: "Rohith Raju"
 ```
+
+## 🤝 Contributions
+
+Feel free to open issues or submit pull requests to improve the app or Helm chart!
+
+## 📬 Contact
+Created by Rohith Raju.
+[LinkedIn](https://www.linkedin.com/in/rohith-raju-6a600481) | [GitHub](https://github.com/DexRoku)
