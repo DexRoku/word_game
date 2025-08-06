@@ -17,6 +17,6 @@ spec:
       containers:
       - name: word-game-app
         image: word-game-app:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
