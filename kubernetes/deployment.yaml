@@ -20,3 +20,20 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
+        env:
+        - name: GAME_TITLE
+          valueFrom:
+            configMapKeyRef:
+              name: word-game-config
+              key: GAME_TITLE
+        - name: GAME_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: word-game-config
+              key: GAME_VERSION
+        - name: GAME_DEVELOPER
+          valueFrom:
+            configMapKeyRef:
+              name: word-game-config
+              key: GAME_DEVELOPER
+

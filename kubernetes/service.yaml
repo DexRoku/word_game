@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: word-game-service
 spec:
+  type: NodePort
   selector:
     app: word-game-app
   ports:
